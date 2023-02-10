@@ -1,0 +1,82 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input
+      type="text"
+      placeholder="Search city"
+      name="city"
+      [(ngModel)]="cityName"
+    />
+  </form>
+</div>
+<div class="container" *ngIf="weatherData">
+  <div class="dev dev--city">
+    <img
+      src="../assets/resource/sun.svg"
+      alt="snow"
+      *ngIf="((weatherData.main.temp - 32) * 5) / 9 > 15"
+      class="svgicon"
+    />
+    <img
+      src="../assets/resource/snow.svg"
+      alt="snow"
+      *ngIf="((weatherData.main.temp - 32) * 5) / 9 <= 15"
+      class="svgicon"
+    />
+    <h3>{{ weatherData.name }}</h3>
+    <h1>{{ ((weatherData.main.temp - 32) * 5) / 9 | number : "1.0-0" }}°C</h1>
+  </div>
+  <div class="dev dev--min">
+    <img src="../assets/resource/min.svg" alt="snow" class="svgicon-sec" />
+    <p>MIN</p>
+    <h4>
+      {{ ((weatherData.main.temp_min - 32) * 5) / 9 | number : "1.0-0" }}°C
+    </h4>
+  </div>
+  <div class="dev dev--max">
+    <img src="../assets/resource/max.svg" alt="snow" class="svgicon-sec" />
+    <p>MAX</p>
+    <h4>
+      {{ ((weatherData.main.temp_max - 32) * 5) / 9 | number : "1.0-0" }}°C
+    </h4>
+  </div>
+  <div class="dev dev--humidity">
+    <img src="../assets/resource/humidity.svg" alt="snow" class="svgicon-sec" />
+    <p>HUMIDITY</p>
+    <h4>{{ weatherData.main.humidity }}%</h4>
+  </div>
+  <div class="dev dev--wind">
+    <img src="../assets/resource/wind.svg" alt="snow" class="svgicon-sec" />
+    <p>WIND</p>
+    <h4>{{ weatherData.wind.speed }} km/h</h4>
+  </div>
+</div>
+
+<!--------------------->
+
+<div class="container" *ngIf="!weatherData">
+  <div class="dev dev--city">
+    <img src="../assets/resource/snow.svg" alt="snow" class="svgicon" />
+    <h3>Milan</h3>
+    <h1>2°c</h1>
+  </div>
+  <div class="dev dev--min">
+    <img src="../assets/resource/min.svg" alt="snow" class="svgicon-sec" />
+    <p>MIN</p>
+    <h4>2°c</h4>
+  </div>
+  <div class="dev dev--max">
+    <img src="../assets/resource/max.svg" alt="snow" class="svgicon-sec" />
+    <p>MAX</p>
+    <h4>2°c</h4>
+  </div>
+  <div class="dev dev--humidity">
+    <img src="../assets/resource/humidity.svg" alt="snow" class="svgicon-sec" />
+    <p>HUMIDITY</p>
+    <h4>2°c</h4>
+  </div>
+  <div class="dev dev--wind">
+    <img src="../assets/resource/wind.svg" alt="snow" class="svgicon-sec" />
+    <p>WIND</p>
+    <h4>2°c</h4>
+  </div>
+</div>
